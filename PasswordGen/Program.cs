@@ -11,12 +11,12 @@ namespace System.Windows
 
             Random random = new Random();
             int lenght = 16;
-            int ab = 0;
+            int i = 0;
 
             string generated = "";
-            while (ab != lenght)
+            while (i != lenght)
             {
-                ab = ab + 1;
+                i++;
                 generated = generated.Insert(
                     random.Next(generated.Length),
                     character[random.Next(character.Length)].ToString()
@@ -25,17 +25,12 @@ namespace System.Windows
             
 
             var t = new Thread((ThreadStart)(() =>
-
             {
-
                 Clipboard.SetText(generated);
-
             }));
 
             t.SetApartmentState(ApartmentState.STA);
-
             t.Start();
-
             t.Join();
 
             return;
